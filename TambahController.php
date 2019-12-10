@@ -24,8 +24,7 @@ class TambahController extends Controller
      */
     public function create()
     {
-        $tambah = Tambah::all();
-        return view('tambah.home',['tambah'=> $tambah]);
+        //
     }
 
     /**
@@ -34,59 +33,30 @@ class TambahController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function tambah(Request $request)
     {
-        $tambah = new Tambah;
-        $tambah->nama = $request->nama;
-        $tambah->nik = $request->nik;
-        $tambah->phone = $request->phone;
-        $tambah->alamat = $request->alamat;
+        $request->validate([
+        'nama' => 'required',
+        'nik' => 'required',
+        'phone' => 'required',
+        'alamat' => 'required'
+        ]);
+
+        Tambah::create([
+        'nama' => $request->nama,
+        'nik' => $request->nik,
+        'phone' => $request->phone,
+        'alamat' => $request->alamat
+        ]);
+
+        return redirect('/daftar');
+        // $tambah = new Tambah;
+        // $tambah -> nama = $request->nama;
+        // $tambah -> nik = $request->nik;
+        // $tambah -> phone = $request->phone;
+        // $tambah -> alamat = $request->alamat;  
+        // $tambah->save();
         
-        $tambah->save();
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Tambah  $tambah
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Tambah $tambah)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Tambah  $tambah
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Tambah $tambah)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Tambah  $tambah
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Tambah $tambah)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Tambah  $tambah
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Tambah $tambah)
-    {
-        //
+        // return redirect('/daftar');
     }
 }
