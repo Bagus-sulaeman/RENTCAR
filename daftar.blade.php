@@ -21,14 +21,14 @@
     </tr>
   </thead>
   <tbody>
-  @foreach ($renters as $renter)
+  @foreach ($renter as $rtr)
     <tr>
       <th scope="row">{{ $loop->iteration }}</th>
-      <td>{{ $renter->nama }}</td>
-      <td>{{ $renter->nik }}</td>
-      <td>{{ $renter->phone }}</td>
-      <td>{{ $renter->alamat }}</td>
-      <td>{{ $renter->create_at }}</td>
+      <td>{{ $rtr->nama }}</td>
+      <td>{{ $rtr->nik }}</td>
+      <td>{{ $rtr->phone }}</td>
+      <td>{{ $rtr->alamat }}</td>
+      <td>{{ $rtr->created_at }}</td>
     </tr>
     @endforeach
   </tbody>
