@@ -11,8 +11,8 @@
 |
 */
 
-Route::get('/', 'TambahController@create');
-Route::post('/', 'TambahController@store');
+Route::get('/', 'TambahController@index');
+Route::post('/', 'TambahController@tambah');
 Route::get('/syarat', function () {
     return view('syarat');
 });
